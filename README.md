@@ -96,3 +96,35 @@ Client "1" -- "n" Reservation
 Reservation "1" -- "n" Consommation
 @enduml
 ![Capture d’écran (386)](https://github.com/ilierrazi00/Uml_Gestion_Hotel_Exercice/assets/94292513/d508af2d-9ed9-4153-bee9-857e1622c113)
+
+## 3- Diagramme d’activité du processus de réservation :
+@startuml
+start
+:Client remplit formulaire de réservation;
+if (Demande soluble ?) then (yes)
+  :Établir réservation;
+  :Enregistrer arrhes;
+else (no)
+  :Informer client de l'indisponibilité;
+endif
+stop
+@enduml
+![Capture d’écran (387)](https://github.com/ilierrazi00/Uml_Gestion_Hotel_Exercice/assets/94292513/c671a3f9-931d-4e27-af5c-f87cf3734b9d)
+
+## 4- Diagramme de séquence du processus de réservation :
+@startuml
+actor Client
+participant "ReservationSystem" as RS
+participant "HotelDatabase" as DB
+
+Client -> RS: Remplir formulaire de réservation
+RS -> DB: Vérifier disponibilité
+DB -> RS: Disponibilité confirmée
+RS -> Client: Confirmation de réservation
+RS -> DB: Enregistrer réservation
+Client -> RS: Payer arrhes
+RS -> DB: Enregistrer paiement
+@enduml
+![Capture d’écran (388)](https://github.com/ilierrazi00/Uml_Gestion_Hotel_Exercice/assets/94292513/f45abefa-db08-413c-8d8e-2cfac0a54dc9)
+
+
