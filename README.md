@@ -1,6 +1,6 @@
 # Uml_Gestion_Hotel_Exercice - Diagrammes UML
 
-## Diagramme des cas d’utilisation - Diagramme use case
+## 1- Diagramme des cas d’utilisation - Diagramme use case :
 @startuml
 actor Client
 actor ReservationAgent
@@ -31,3 +31,68 @@ UC6 -- UC7 : includes
 UC7 -- UC8 : includes
 @enduml
 ![Capture d’écran (385)](https://github.com/ilierrazi00/Uml_Gestion_Hotel_Exercice/assets/94292513/65164a1c-7f74-4f04-9980-84bc46843fb8)
+
+## 2- Diagramme de classe UML :
+@startuml
+class Hotel {
+  int id
+  String nom
+  String adresse
+  String telephone
+  int classe
+  int nombreDeChambres
+  + ajouterChambre()
+  + modifierChambre()
+  + consulterDisponibilités()
+}
+
+class Chambre {
+  int id
+  int numero
+  String categorie
+  int capacite
+  String confort
+  float prix
+  + estDisponible()
+  + reserver()
+  + enregistrerConsommation()
+}
+
+class Reservation {
+  int id
+  String codeClient
+  String numeroReservation
+  Date dateReservation
+  Date periodeSejour
+  float arrhes
+  + confirmer()
+  + annuler()
+  + enregistrerArrivee()
+}
+
+class Client {
+  int id
+  String nom
+  String adresse
+  String telephone
+  String email
+  + effectuerReservation()
+  + annulerReservation()
+}
+
+class Consommation {
+  int id
+  String type
+  String description
+  float prix
+  Date date
+  + ajouter()
+  + supprimer()
+}
+
+Hotel "1" -- "n" Chambre
+Chambre "1" -- "n" Reservation
+Client "1" -- "n" Reservation
+Reservation "1" -- "n" Consommation
+@enduml
+![Capture d’écran (386)](https://github.com/ilierrazi00/Uml_Gestion_Hotel_Exercice/assets/94292513/d508af2d-9ed9-4153-bee9-857e1622c113)
